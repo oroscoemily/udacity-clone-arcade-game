@@ -40,7 +40,7 @@ Enemy.prototype.render = function() {
 var Player = function(x, y, speed) {
     this.x = x;
     this.y = y;
-    
+    this.speed = speed;
     this.sprite = 'images/char-pink-girl.png';
 };
 
@@ -90,7 +90,7 @@ enemyYPositions.forEach( function(yPosition) {
 
 
 
-var player = new Player(400, 400);
+var player = new Player(400, 400, 50);
 
 
 
