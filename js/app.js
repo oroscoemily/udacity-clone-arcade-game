@@ -59,19 +59,19 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(keyPress) {
     if (keyPress == 'left'){
-        this.x -= 80;
+        this.x -= this.speed + 80;
     };
 
     if (keyPress == 'up') {
-        this.y += 50;
+        this.y += this.speed + 50;
     };
 
     if (keyPress == 'right') {
-        this.x += 80;
+        this.x += this.speed + 80;
     };
 
     if (keyPress == 'down') {
-        this.y -= 50;
+        this.y -= this.speed + 50;
     };
 };
 
