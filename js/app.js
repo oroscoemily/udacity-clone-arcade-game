@@ -41,7 +41,7 @@ var Player = function(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
-    this.sprite = 'images/char-pink-girl.png';
+    this.sprite = 'images/char-boy.png';
 };
 
 //update() method
@@ -58,20 +58,20 @@ Player.prototype.render = function() {
 //handleInput() method 
 
 Player.prototype.handleInput = function(keyPress) {
-    if (keyPress == 'left'){
-        this.x -= this.speed + 80;
+    if (keyPress === 'left'){
+        this.x -= this.speed + 100;
     };
 
-    if (keyPress == 'up') {
-        this.y += this.speed + 50;
+    if (keyPress === 'up') {
+        this.y -= this.speed + 90;
     };
 
-    if (keyPress == 'right') {
-        this.x += this.speed + 80;
+    if (keyPress === 'right') {
+        this.x += this.speed + 100;
     };
 
-    if (keyPress == 'down') {
-        this.y -= this.speed + 50;
+    if (keyPress === 'down') {
+        this.y += this.speed + 90;
     };
 };
 
@@ -90,7 +90,7 @@ enemyYPositions.forEach( function(yPosition) {
 
 
 
-var player = new Player(400, 400, 50);
+var player = new Player(200, 400, 0);
 
 
 
