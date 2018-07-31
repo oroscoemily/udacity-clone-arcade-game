@@ -52,6 +52,12 @@ Player.prototype.update = function (dt) {
 
 //render() method
 Player.prototype.render = function() {
+    if (this.x <= 0) {
+        this.x = 0;
+    }
+    if (this.x >= 400){
+        this.x = 400;
+    }
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
