@@ -22,6 +22,14 @@ Enemy.prototype.update = function(dt) {
         this.x = 0;
         this.speed = Math.floor(Math.random() * Math.floor(300));
     };
+
+    //handle collisions
+    if (player.x - 50 < this.x && player.x + 50 > this.x && player.y - 35 < this.y && player.y + 35 > this.y){
+        player.x = 200;
+        player.y = 400;
+    }
+
+   
     
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
@@ -45,19 +53,26 @@ var Player = function(x, y, speed) {
 };
 
 //update() method
-Player.prototype.update = function (dt) {
-    this.x += this.speed * dt;
-    this.y += this.speed * dt;
-};
-
-//render() method
-Player.prototype.render = function() {
+Player.prototype.update = function () {
     if (this.x <= 0) {
         this.x = 0;
     }
     if (this.x >= 400){
         this.x = 400;
     }
+    if (this.y >= 350) {
+        this.y = 400;
+    }
+
+    if (this.y < -50) {
+        this.x = 200;
+        this.y = 400;
+    };
+};
+
+//render() method
+Player.prototype.render = function() {
+    console.log(this.x);
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -90,7 +105,7 @@ var enemyYPositions=[60, 140, 220];
 var allEnemies = [];
 
 enemyYPositions.forEach( function(yPosition) {
-    enemy = new Enemy(0, yPosition, Math.floor(Math.random() * Math.floor(400)));
+    enemy = new Enemy(0, yPosition, Math.floor(Math.random() * Math.floor(500)));
     allEnemies.push(enemy);
 });
 
