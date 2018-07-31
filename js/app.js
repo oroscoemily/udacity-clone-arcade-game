@@ -15,7 +15,13 @@ var Enemy = function(x, y, speed) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
+
     this.x += this.speed * dt;
+
+    if (this.x >= 505) {
+        this.x = 0;
+        this.speed = Math.floor(Math.random() * Math.floor(300));
+    };
 
     
     // You should multiply any movement by the dt parameter
@@ -78,8 +84,8 @@ var enemyYPositions=[60, 140, 220];
 var allEnemies = [];
 
 enemyYPositions.forEach( function(yPosition) {
-    enemy = new Enemy(100, yPosition, 100);
-    allEnemies += enemy;
+    enemy = new Enemy(0, yPosition, Math.floor(Math.random() * Math.floor(400)));
+    allEnemies.push(enemy);
 });
 
 
