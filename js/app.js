@@ -1,21 +1,27 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
+    this.x += this.speed * dt;
+
+    
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 };
-
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -25,10 +31,60 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+// Player class
+var Player = function(x, y, speed) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.sprite = 'images/char-boy.png';
+};
+
+//update() method
+Player.prototype.update = function (dt) {
+    this.y += this.speed * dt;
+};
+
+//render() method
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+//handleInput() method 
+
+Player.prototype.handleInput = function(keyPress) {
+    if (keyPress == 'left'){
+        this.x -= this.speed + 80;
+    };
+
+    if (keyPress == 'up') {
+        this.y += this.speed + 50;
+    };
+
+    if (keyPress == 'right') {
+        this.x += this.speed + 80;
+    };
+
+    if (keyPress == 'down') {
+        this.y -= this.speed + 50;
+    };
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+
+//enemy positions
+var enemyYPositions=[60, 140, 220];
+var allEnemies = [];
+
+enemyYPositions.forEach( function(yPosition) {
+    enemy = new Enemy(100, yPosition, 100);
+    allEnemies += enemy;
+});
+
+
+
+var player = new Player(200, 380, 50);
 
 
 
