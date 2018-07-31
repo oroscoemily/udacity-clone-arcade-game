@@ -22,7 +22,6 @@ Enemy.prototype.update = function(dt) {
         this.x = 0;
         this.speed = Math.floor(Math.random() * Math.floor(300));
     };
-
     
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
@@ -41,12 +40,13 @@ Enemy.prototype.render = function() {
 var Player = function(x, y, speed) {
     this.x = x;
     this.y = y;
-    this.speed = speed;
-    this.sprite = 'images/char-boy.png';
+    
+    this.sprite = 'images/char-pink-girl.png';
 };
 
 //update() method
 Player.prototype.update = function (dt) {
+    this.x += this.speed * dt;
     this.y += this.speed * dt;
 };
 
@@ -59,19 +59,19 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(keyPress) {
     if (keyPress == 'left'){
-        this.x -= this.speed + 80;
+        this.x -= 80;
     };
 
     if (keyPress == 'up') {
-        this.y += this.speed + 50;
+        this.y += 50;
     };
 
     if (keyPress == 'right') {
-        this.x += this.speed + 80;
+        this.x += 80;
     };
 
     if (keyPress == 'down') {
-        this.y -= this.speed + 50;
+        this.y -= 50;
     };
 };
 
@@ -90,7 +90,7 @@ enemyYPositions.forEach( function(yPosition) {
 
 
 
-var player = new Player(200, 380, 50);
+var player = new Player(400, 400);
 
 
 
