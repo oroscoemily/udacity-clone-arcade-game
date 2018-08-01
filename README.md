@@ -1,6 +1,23 @@
-frontend-nanodegree-arcade-game
-===============================
+#Clone Arcade Game: Project 3 by Udacity's Front-End Web Development Nanodegree
+## Student: Emily Orosco Nuñez
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+
+## Project Description 
+
+Using the provided visual assets and a game loop engine, you must add a number of entities to the game including the player characters and enemies to recreate the classic arcade game Frogger.
+
+Games have a lot of objects and those objects do a lot of different things; but sometimes they do some very similar things as well. This creates a great opportunity to practice object-oriented programming, an important programming paradigm that influences your application architecture and provides performance optimization.
+
+## Game Instructions
+
+To play, load the index.html file via Chrome and when you are ready to begin use the arrows on your keyboard to move left, right, up, or down.
+
+To level up, you must reach the water. Once you reach the water, continue playing, your level will update and you will notice that the bugs will move faster. 
+
+If you collide with a bug (the enemy), you will restart at Level 1 and your player will go back to the default location.
+
+
+### Contributing
+
+If you would like to contribute to this code, pull requests are being reviewed.  
