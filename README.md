@@ -1,4 +1,4 @@
-#Clone Arcade Game: Project 3 by Udacity's Front-End Web Development Nanodegree
+# Clone Arcade Game: Project 3 by Udacity's Front-End Web Development Nanodegree
 ## Student: Emily Orosco Nuñez
 
 
