@@ -1,10 +1,5 @@
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -12,37 +7,39 @@ var Enemy = function(x, y, speed) {
     
 };
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-
+    //ensures that they move 
+    //consistently across all computers
     this.x += this.speed * dt;
+    document.querySelector('body').style.background = 'white';
 
+    //makes enemies restart once
+    //they reach the end of the canvas
     if (this.x >= 505) {
         this.x = 0;
-        this.speed = Math.floor(Math.random() * Math.floor(300));
+        this.speed = Math.floor(Math.random() * Math.floor(300)  *level);
     };
 
-    //handle collisions
-    if (player.x - 50 < this.x && player.x + 50 > this.x && player.y - 35 < this.y && player.y + 35 > this.y){
+    //handles collisions
+    //restarts player
+    if (this.x > (player.x - 50) &&
+        this.x < (player.x + 50) &&
+        this.y > (player.y - 50) && 
+        this.y < (player.y + 50)) {
+
         player.x = 200;
         player.y = 400;
-    }
+        level = 1;
+        document.querySelector('div').innerHTML="Level : " + level;
+        };
+    };
+        //flashes red and white to indicate loss
 
-   
-    
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
+        
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 
 // Player class
 var Player = function(x, y, speed) {
@@ -54,6 +51,8 @@ var Player = function(x, y, speed) {
 
 //update() method
 Player.prototype.update = function () {
+    //restricts player from 
+    //being able to go off canvas
     if (this.x <= 0) {
         this.x = 0;
     }
@@ -63,21 +62,19 @@ Player.prototype.update = function () {
     if (this.y >= 350) {
         this.y = 400;
     }
-
+    //checks if player made it to water
+    //adds to the level
     if (this.y < -50) {
-        this.x = 200;
-        this.y = 400;
+        player.levelUp();
     };
 };
 
 //render() method
 Player.prototype.render = function() {
-    console.log(this.x);
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 //handleInput() method 
-
 Player.prototype.handleInput = function(keyPress) {
     if (keyPress === 'left'){
         this.x -= this.speed + 100;
@@ -96,21 +93,31 @@ Player.prototype.handleInput = function(keyPress) {
     };
 };
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+Player.prototype.levelUp = function(){
 
+    this.x = 200;
+    this.y = 400;
+    level += 1;
+    enemy.speed = Math.floor(Math.random() * Math.floor(300)  *level);
+    document.querySelector('div').innerHTML = ("Level : " + level);
+
+
+}
+
+//instatiates level for player
+var level = 1;
 //enemy positions
 var enemyYPositions=[60, 140, 220];
 var allEnemies = [];
 
+//creates enemies at each position
 enemyYPositions.forEach( function(yPosition) {
-    enemy = new Enemy(0, yPosition, Math.floor(Math.random() * Math.floor(500)));
+    enemy = new Enemy(0, yPosition, Math.floor(Math.random() * Math.floor(300)  * level));
     allEnemies.push(enemy);
 });
 
 
-
+//instantiates player
 var player = new Player(200, 400, 0);
 
 
