@@ -66,7 +66,7 @@ Player.prototype.update = function () {
     }
     //checks if player made it to water
     //adds to the level
-    if (this.y < -50) {
+    if (this.y <= -50) {
         this.levelUp();
     };
 };
